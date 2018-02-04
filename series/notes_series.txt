@@ -1,0 +1,29 @@
+Write a program that will take a string of digits and give you all the possible
+consecutive number series of length n in that string.  
+For example, the string "01234" has the following 3-digit series:
+
+- 012
+- 123
+- 234
+And the following 4-digit series:
+
+- 0123
+- 1234
+And if you ask for a 6-digit series from a 5-digit string, 
+you deserve whatever you get.
+
+'01234'
+
+input: string of numbers and a slice_count
+output: an array of arrays (slices)
+rules: - start from the beginning of the string
+       - return the beginning of the sting through the slice_count of chars
+       - pointer tracks the current_position
+       - the size of the string minus the current_position
+
+algorithm: convert the string to an array of integers
+           iterate through the array of integers
+           slice slice_count of integers into a results array
+           return the array
+             array size - slice count 5 - 2 = 3
+                                      5 - 4 = 1

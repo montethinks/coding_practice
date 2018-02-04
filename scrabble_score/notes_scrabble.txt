@@ -1,0 +1,18 @@
+ones   = %w[A E I O U L N R S T]
+    twos   = %w[D G]
+    threes = %w[B C M P]
+    fours  = %w[F H V W Y]
+    fives  = %w[K]
+    eights = %w[J X]
+    tens   = %w[Q Z]
+
+    score_key << ones.zip(Array.new(ones.size, 1)).to_h
+    score_key << twos.zip(Array.new(twos.size, 2)).to_h
+    score_key << threes.zip(Array.new(threes.size, 3)).to_h
+    score_key << fours.zip(Array.new(fours.size, 4)).to_h
+    score_key << fives.zip(Array.new(fives.size, 5)).to_h
+    score_key << eights.zip(Array.new(eights.size, 8)).to_h
+    score_key << tens.zip(Array.new(tens.size, 10)).to_h
+
+
+    score_key.reduce(&:merge)

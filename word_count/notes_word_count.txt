@@ -1,0 +1,8 @@
+input: a phrase as a string
+output: hash with each word and its count as Integer
+
+algorithm:  - split the string by any punctuation (,.@#$%^!:;)
+              - downcase all words
+            - find regex for non word or non integer character
+            - iterate through the collection of words
+            - each word is a key += 1 for each value

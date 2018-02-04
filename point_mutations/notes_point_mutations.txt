@@ -1,0 +1,69 @@
+GAGCCTACTAACGGGAT
+CATCGTAATGACGGCCT
+^ ^ ^  ^ ^    ^^
+
+input: two dna strings
+output: an integer of the differences (Hamming Distance)
+rules: strings should be equal length
+       if strings have an unequal length
+        - calculate the difference between the shorter length
+          - slice the shorter length number of chararcters from longer length
+          calculate the difference
+
+algorithm: - convert each string to an array of chararcters
+           - string_length times for an index
+            - compare original_dna[index] == other_dna[index]
+              - if they are different increment a counter
+              - next if the are the same
+              return the counter
+
+              p DNA.new('GGACGGATTCTGACCTGGACTAATTTTGGGG').hamming_distance('AGGACGGATTCTGACCTGGACTAATTTTGGGG')
+
+
+
+def point_mutations(original_dna, other_dna)
+  original = ""
+  other = ""
+
+  if original_dna.size == other_dna.size
+    return process_mutation(original_dna, other_dna)
+  end
+
+  if original_dna.size < other_dna.size
+    other << other_dna.slice(0, original_dna.size)
+    original = original_dna
+    process_mutation(other, original)
+  elsif original_dna.size > other_dna.size
+    original << original_dna.slice(0, other_dna.size)
+    other = other_dna
+    process_mutation(original, other)
+  end
+end
+
+def process_mutation(original_dna, other_dna)
+  distance = 0
+
+  original_dna.size.times do |idx|
+    next if original_dna[idx] == other_dna[idx]
+    distance += 1
+  end
+
+  distance
+end
+
+p point_mutations("GAGCCTACTAACGGGAT", "CATCGTAATGACGGCCT") # => 7
+p point_mutations("GAGCCTAC", "CATCGTAATGACGGCCT") # => 4 CATCGTAA
+p point_mutations('GACTACGGACAGGGTAGGGAAT', 'GACATCGCACACC') # => 5
+
+    original = ""
+    other = ""
+
+    if @strand.size < distance.size
+      other << distance.slice(0, @strand.size)
+      original = @strand
+      calculate_distance(other, original)
+    elsif @strand.size > distance.size
+      orginal << @strand.slice(0, distance.size)
+      other = distance
+      calculate_distance(original, other)
+    end

@@ -1,0 +1,31 @@
+Rule 1: 
+If a word begins with a vowel sound, add an "ay" sound to the end of the word.
+
+Rule 2: 
+If a word begins with a consonant sound, move it to the end of the word, and then add an "ay" sound to the end of the word. ([aeiou]+[^aeiou])
+
+
+input: string
+output: a pig latin translated string
+
+rules: if a word begins with a vowel [aeiou] or [xr]  or [yt] \A[aeiou]
+          append "ay" to the end of the word
+
+       if the word begins with a consonant /\A[^aeiou]/, [xe] /(\A[^aeiou])/
+          slice consonants through the first vowel ('a', 'e', 'o','u', 'i')
+          append sliced chars + "ay" to the end of the word
+
+           if there is a consecutive [qu] slice before [qu] through next vowel [^aeiou]qu{1}  /(\A[^aeiou])|qu/
+
+algorithm:
+"apple"
+'quick fast run'
+'xenon'
+'xray'
+
+create an array of words 
+  - split on space
+
+map through words
+    if word[0].match? [aeiou], [xr], [yt] (\A[aeiou]+[^aeiou]|yt|xe)
+      word = word[1..-1] + word[0] + 'ay'
